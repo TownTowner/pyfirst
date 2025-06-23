@@ -1,0 +1,36 @@
+# this is a toml file
+version = '1.0.0'
+author = 'Tom'
+# server config
+[server]
+host = "localhost"
+port = 8080
+debug = true
+
+# database
+[database]
+host = "localhost"
+port = 3069
+dbname = 'dbtest'
+schama = "\"dbo\""
+superusers = ['admin', 'tom']
+createtime = 2020-01-01T00:00:00Z
+authusers = [{ name = 'admin', age = 30 }, { name = 'tom', age = 20 }]
+dbo.account = 'admin'
+dbo.password = 'admin'
+
+# dict
+[database.mysql]
+host = "localhost"
+port = 3069
+dbname = 'dbtest'
+
+# list
+[[frameworks]]
+name = 'flask'
+version = '1.0.0'
+dependencies = ['requests', 'pandas']
+[[frameworks]]
+name = 'django'
+version = '2.0.0'
+dependencies = ['requests', 'pandas']

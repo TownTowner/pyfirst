@@ -1,0 +1,67 @@
+# this is a sample config.yml file
+# you can use this file to configure the bot
+
+database: &db # the database type to use (sqlite, mysql, postgresql)
+  type: sqlite
+  # the database name to use (only for sqlite)
+  name: database.db
+  # the database host to use (only for mysql and postgresql)
+  host: localhost
+  # the database port to use (only for mysql and postgresql)
+  port: 3306
+  # the database user to use (only for mysql and postgresql)
+  user: root
+  # the database password to use (only for mysql and postgresql)
+  password: root
+  # the database name to use (only for mysql and postgresql)
+  database: database
+  # the database table to use (only for mysql and postgresql)
+  table: users
+  usergroups:
+    # the user group name to use (only for mysql and postgresql)
+    - name: users
+      # the user group id to use (only for mysql and postgresql)
+      id: 1
+    - name: admins
+      id: 2
+  whitelist: { 0:"localhost", 1:"tom.com" }
+  blacklist: ["g.com", "a.com"]
+
+mysql_databse:
+  <<: *db
+  type: mysql
+
+description_singleline: This is a sample
+  config.yml file
+description_multiline: |
+  This is a sample config.yml file
+
+  with multiple lines
+description_multiline2: |-
+  This is a sample config.yml file
+
+  with multiple lines
+description_multiline3: >
+  This is a sample config.yml file
+
+  with multiple lines
+description_multiline4: >-
+  This is a sample config.yml file
+
+  with multiple lines
+
+# output:
+#  'description_multiline': 'This is a sample config.yml file\n'
+#                           '\n'
+#                           'with multiple lines\n',
+#  'description_multiline2': 'This is a sample config.yml '
+#                            'file\n'
+#                            '\n'
+#                            'with multiple lines',
+#  'description_multiline3': 'This is a sample config.yml '
+#                            'file\n'
+#                            'with multiple lines\n',
+#  'description_multiline4': 'This is a sample config.yml '
+#                            'file\n'
+#                            'with multiple lines',
+#  'description_singleline': 'This is a sample config.yml file',

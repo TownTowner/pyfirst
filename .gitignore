@@ -1,0 +1,17 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+.roo
+.cursor
+.cursor.db
+.cursor.db-journal
+.history
+.vscode
