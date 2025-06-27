@@ -74,10 +74,24 @@ def cascadeDetection():
     cv2.destroyAllWindows()
 
 
+def imgFix():
+    img = cv2.imread("data/imgs/fruits.png")
+    mask = cv2.imread("data/imgs/fruits_lines.png", cv2.IMREAD_GRAYSCALE)
+    # mask = cv2.resize(mask, (img.shape[1], img.shape[0]))
+    print(mask.shape)
+    print(img.shape)
+    res = cv2.inpaint(img, mask, 3, cv2.INPAINT_NS)
+
+    cv2.imshow("img", np.hstack((img, res)))
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
 def main():
     # meanShift()
-    mog2()
+    # mog2()
     # cascadeDetection()
+    imgFix()
 
 
 if __name__ == "__main__":
