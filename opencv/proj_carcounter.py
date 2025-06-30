@@ -10,8 +10,8 @@ def calcuCenter(rec):
 
 
 def main():
-    videoPath = "./data/car4.ts"
-    videoPath = "./data/cars.mp4"
+    videoPath = "./data/videos/car4.ts"
+    videoPath = "./data/videos/cars.mp4"
     # videoPath = 0
     cap = cv2.VideoCapture(videoPath)
     # 去除背景,4.X已移除

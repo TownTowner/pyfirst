@@ -12,7 +12,7 @@ def main():
     # print(file_path)
 
     # cap = cv2.VideoCapture(0)  # camera
-    cap = cv2.VideoCapture("./data/gemini_gen_2mem.mp4")  # video
+    cap = cv2.VideoCapture("./data/videos/cars.mp4")  # video
     while True:
         ret, frame = cap.read()
         if not ret:
