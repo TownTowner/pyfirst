@@ -12,9 +12,69 @@
 # GOTURN Tracker：这是OpenCV中唯一一深度学习为基础的目标检测器。它需要额外的模型才能运行。（最低
 # 支持OpenCV3.2.0）
 
+import cv2
+import numpy as np
+
+
+def legacy():
+    print(f"{(cv2.__version__)}")  # opencv V4.5.5
+    # print([attr for attr in dir(cv2) if "Tracker" in attr])
+
+    # "TrackerCSRT", "TrackerCSRT_Params", "TrackerCSRT_create",
+    # "TrackerDaSiamRPN", "TrackerDaSiamRPN_Params", "TrackerDaSiamRPN_create",
+    # "TrackerGOTURN", "TrackerGOTURN_Params", "TrackerGOTURN_create",
+    # "TrackerKCF", "TrackerKCF_CN", "TrackerKCF_CUSTOM",
+    # "TrackerKCF_GRAY", "TrackerKCF_Params", "TrackerKCF_create",
+    # "TrackerMIL", "TrackerMIL_Params", "TrackerMIL_create",
+    # "legacy_MultiTracker"
+
+    trackers = cv2.legacy.MultiTracker_create()  # opencv V4.5.5
+    # print(dir(cv2.legacy))
+    # "MultiTracker_create", "TrackerBoosting_create", "TrackerCSRT_create",
+    # "TrackerKCF_create", "TrackerMIL_create", "TrackerMOSSE_create",
+    # "TrackerMedianFlow_create", "TrackerTLD_create",
+    tracker_dict = {
+        "boosting": cv2.legacy.TrackerBoosting_create,
+        "mil": cv2.legacy.TrackerMIL_create,
+        "kcf": cv2.legacy.TrackerKCF_create,
+        "csrt": cv2.legacy.TrackerCSRT_create,
+        "medianflow": cv2.legacy.TrackerMedianFlow_create,
+        "tld": cv2.legacy.TrackerTLD_create,
+        "mosse": cv2.legacy.TrackerMOSSE_create,
+    }
+
+    # tracker = cv2.legacy.TrackerGOTURN_create()
+    # trackers.add(tracker, frame, bbox)
+
+    # cap = cv2.VideoCapture("data/videos/soccer.mp4")
+    cap = cv2.VideoCapture("data/videos/racecar.mp4")
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            print("无法读取视频帧")
+            break
+
+        success, boxes = trackers.update(frame)
+        for box in boxes:
+            (x, y, w, h) = [int(v) for v in box]
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+        cv2.imshow("frame", frame)
+
+        k = cv2.waitKey(100) & 0xFF
+        if k == ord("s"):
+            roi = cv2.selectROI("frame", frame)
+            tracker = tracker_dict["csrt"]()
+            trackers.add(tracker, frame, roi)
+        elif k == ord("q"):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+
 
 def main():
-    pass
+    legacy()
 
 
 if __name__ == "__main__":
