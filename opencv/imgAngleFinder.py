@@ -54,8 +54,8 @@ def mouse(event, x, y, flags, param):
 def calcuAngle():
     img = cv2.imread("data/imgs/angles.png")
 
-    cv2.imshow("img", img)
     win = "img"
+    cv2.imshow(win, img)
     cv2.setMouseCallback(win, mouse, {"img": img, "win": win})
 
     cv2.waitKey(0)
