@@ -946,6 +946,8 @@ dependencies = [
     { name = "pandas" },
     { name = "playwright" },
     { name = "pytesseract" },
+    { name = "python-barcode" },
+    { name = "pyzbar" },
     { name = "requests" },
     { name = "sqlalchemy" },
 ]
@@ -965,6 +967,8 @@ requires-dist = [
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "playwright", specifier = ">=1.52.0" },
     { name = "pytesseract", specifier = ">=0.3.13" },
+    { name = "python-barcode", specifier = ">=0.15.1" },
+    { name = "pyzbar", specifier = ">=0.1.9" },
     { name = "requests", specifier = ">=2.32.3" },
     { name = "sqlalchemy", specifier = ">=2.0.41" },
 ]
@@ -1078,6 +1082,15 @@ wheels = [
 ]
 
 [[package]]
+name = "python-barcode"
+version = "0.15.1"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+sdist = { url = "https://mirrors.aliyun.com/pypi/packages/22/63/bc2fb47c9ba904b376780917f053b1c85b87085fd44948590e71c11187b0/python-barcode-0.15.1.tar.gz", hash = "sha256:3b1825fbdb11e597466dff4286b4ea9b1e86a57717b59e563ae679726fc854de" }
+wheels = [
+    { url = "https://mirrors.aliyun.com/pypi/packages/10/27/9b5c5bb1938d4e6b12f4c95f40ea905c11df3cd58e128e9305397b9a2697/python_barcode-0.15.1-py3-none-any.whl", hash = "sha256:057636fba37369c22852410c8535b36adfbeb965ddfd4e5b6924455d692e0886" },
+]
+
+[[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
 source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
@@ -1096,6 +1109,16 @@ source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
 sdist = { url = "https://mirrors.aliyun.com/pypi/packages/f8/bf/abbd3cdfb8fbc7fb3d4d38d320f2441b1e7cbe29be4f23797b4a2b5d8aac/pytz-2025.2.tar.gz", hash = "sha256:360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3" }
 wheels = [
     { url = "https://mirrors.aliyun.com/pypi/packages/81/c4/34e93fe5f5429d7570ec1fa436f1986fb1f00c3e0f43a589fe2bbcd22c3f/pytz-2025.2-py2.py3-none-any.whl", hash = "sha256:5ddf76296dd8c44c26eb8f4b6f35488f3ccbf6fbbd7adee0b7262d43f0ec2f00" },
+]
+
+[[package]]
+name = "pyzbar"
+version = "0.1.9"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+wheels = [
+    { url = "https://mirrors.aliyun.com/pypi/packages/6d/24/81ebe6a1c00760471a3028a23cbe0b94e5fa2926e5ba47adc895920887bc/pyzbar-0.1.9-py2.py3-none-any.whl", hash = "sha256:4559628b8192feb25766d954b36a3753baaf5c97c03135aec7e4a026036b475d" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/8e/87/7b596730179ddf17857eea33ba820354dd4e1cf941e57f51ffccce26c409/pyzbar-0.1.9-py2.py3-none-win32.whl", hash = "sha256:8f4c5264c9c7c6b9f20d01efc52a4eba1ded47d9ba857a94130afe33703eb518" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/0a/e2/1c6a8e94197612dbdfc51eab8dfb674168829885fac2c4f50ac8366c25ca/pyzbar-0.1.9-py2.py3-none-win_amd64.whl", hash = "sha256:13e3ee5a2f3a545204a285f41814d5c0db571967e8d4af8699a03afc55182a9c" },
 ]
 
 [[package]]
