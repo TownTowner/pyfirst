@@ -8,8 +8,8 @@ from datetime import datetime
 
 # 配置参数
 SOURCE_DIR = r"D:\Program Files\idm\download"  # 源目录路径
-TARGET_DIR = r"E:\movies\xv"  # 目标目录路径
-KEYWORD = "XVIDEOS.COM"  # 文件名包含的关键字
+TARGET_DIR = r"E:\movies"  # 目标目录路径
+KEYWORD = "X.COM"  # 文件名包含的关键字
 LOG_FILE = r"D:\Programs\autoscripts\moveX\Logs\file_move.log"  # 日志文件路径
 INTERVAL_SECONDS = 60  # 检查间隔（秒）
 
