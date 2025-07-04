@@ -247,6 +247,12 @@ wheels = [
 ]
 
 [[package]]
+name = "dlib"
+version = "20.0.0"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+sdist = { url = "https://mirrors.aliyun.com/pypi/packages/28/f4/f8949b18ec1df2ef05fc2ea1d1dd82ff2d050b8704b7d0d088017315c221/dlib-20.0.0.tar.gz", hash = "sha256:9ab6a6fe113cc36a20c3f611c57fa6a07f18d1169bd04efb85c32e21b23b7d2b" }
+
+[[package]]
 name = "et-xmlfile"
 version = "2.0.0"
 source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
@@ -254,6 +260,28 @@ sdist = { url = "https://mirrors.aliyun.com/pypi/packages/d3/38/af70d7ab1ae9d4da
 wheels = [
     { url = "https://mirrors.aliyun.com/pypi/packages/c1/8b/5fe2cc11fee489817272089c4203e679c63b570a5aaeb18d852ae3cbba6a/et_xmlfile-2.0.0-py3-none-any.whl", hash = "sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa" },
 ]
+
+[[package]]
+name = "face-recognition"
+version = "1.3.0"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "dlib" },
+    { name = "face-recognition-models" },
+    { name = "numpy" },
+    { name = "pillow" },
+]
+sdist = { url = "https://mirrors.aliyun.com/pypi/packages/6c/49/75dda409b94841f01cbbc34114c9b67ec618265084e4d12d37ab838f4fd3/face_recognition-1.3.0.tar.gz", hash = "sha256:5e5efdd1686aa566af0d3cc1313b131e4b197657a8ffd03669e6d3fad92705ec" }
+wheels = [
+    { url = "https://mirrors.aliyun.com/pypi/packages/1e/95/f6c9330f54ab07bfa032bf3715c12455a381083125d8880c43cbe76bb3d0/face_recognition-1.3.0-py2.py3-none-any.whl", hash = "sha256:c543e91c8cfbf24d19db04e511ebbddcb23894bcee510133729ee78e9f4b5e83" },
+]
+
+[[package]]
+name = "face-recognition-models"
+version = "0.3.0"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+sdist = { url = "https://mirrors.aliyun.com/pypi/packages/cf/3b/4fd8c534f6c0d1b80ce0973d01331525538045084c73c153ee6df20224cf/face_recognition_models-0.3.0.tar.gz", hash = "sha256:b79bd200a88c87c9a9d446c990ae71c5a626d1f3730174e6d570157ff1d896cf" }
 
 [[package]]
 name = "flatbuffers"
@@ -936,6 +964,7 @@ dependencies = [
     { name = "aiomysql" },
     { name = "captcha" },
     { name = "cvzone" },
+    { name = "face-recognition" },
     { name = "manim" },
     { name = "matplotlib" },
     { name = "mediapipe" },
@@ -949,6 +978,7 @@ dependencies = [
     { name = "python-barcode" },
     { name = "pyzbar" },
     { name = "requests" },
+    { name = "setuptools" },
     { name = "sqlalchemy" },
 ]
 
@@ -957,6 +987,7 @@ requires-dist = [
     { name = "aiomysql", specifier = ">=0.2.0" },
     { name = "captcha", specifier = ">=0.7.1" },
     { name = "cvzone", specifier = ">=1.6.1" },
+    { name = "face-recognition", specifier = ">=1.3.0" },
     { name = "manim", specifier = ">=0.17.3" },
     { name = "matplotlib", specifier = ">=3.10.3" },
     { name = "mediapipe", specifier = ">=0.10.21" },
@@ -970,6 +1001,7 @@ requires-dist = [
     { name = "python-barcode", specifier = ">=0.15.1" },
     { name = "pyzbar", specifier = ">=0.1.9" },
     { name = "requests", specifier = ">=2.32.3" },
+    { name = "setuptools", specifier = ">=80.9.0,<81" },
     { name = "sqlalchemy", specifier = ">=2.0.41" },
 ]
 
@@ -1214,6 +1246,15 @@ wheels = [
     { url = "https://mirrors.aliyun.com/pypi/packages/4f/d2/18246f43ca730bb81918f87b7e886531eda32d835811ad9f4657c54eee35/sentencepiece-0.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f295105c6bdbb05bd5e1b0cafbd78ff95036f5d3641e7949455a3f4e5e7c3109" },
     { url = "https://mirrors.aliyun.com/pypi/packages/8a/47/ca237b562f420044ab56ddb4c278672f7e8c866e183730a20e413b38a989/sentencepiece-0.2.0-cp312-cp312-win32.whl", hash = "sha256:fb89f811e5efd18bab141afc3fea3de141c3f69f3fe9e898f710ae7fe3aab251" },
     { url = "https://mirrors.aliyun.com/pypi/packages/c6/97/d159c32642306ee2b70732077632895438867b3b6df282354bd550cf2a67/sentencepiece-0.2.0-cp312-cp312-win_amd64.whl", hash = "sha256:7a673a72aab81fef5ebe755c6e0cc60087d1f3a4700835d40537183c1703a45f" },
+]
+
+[[package]]
+name = "setuptools"
+version = "80.9.0"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+sdist = { url = "https://mirrors.aliyun.com/pypi/packages/18/5d/3bf57dcd21979b887f014ea83c24ae194cfcd12b9e0fda66b957c69d1fca/setuptools-80.9.0.tar.gz", hash = "sha256:f36b47402ecde768dbfafc46e8e4207b4360c654f1f3bb84475f0a28628fb19c" }
+wheels = [
+    { url = "https://mirrors.aliyun.com/pypi/packages/a3/dc/17031897dae0efacfea57dfd3a82fdd2a2aeb58e0ff71b77b87e44edc772/setuptools-80.9.0-py3-none-any.whl", hash = "sha256:062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922" },
 ]
 
 [[package]]
