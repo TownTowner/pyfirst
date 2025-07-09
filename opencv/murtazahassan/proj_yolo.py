@@ -12,6 +12,11 @@ def findObjects(img, outputs, classNames):
     for output in outputs:
         for det in output:
             # det: cx, xy, w, h, confidence, score1,score2,...,scoreN
+            #               0       1       2       3       4           5      6        7       ...  79
+            # Box Number    cx      cy      W       H       confidence  person bicycle  car     ...  toothbrush
+            # 0             0.51    0.64    0.58    0.36    0.93        0.0    0.0      0.93    ...  0.0
+            # ...
+            # 299
             scores = det[5:]
             classId = np.argmax(scores)
             confidence = scores[classId]
