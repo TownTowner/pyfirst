@@ -18,3 +18,4 @@ wheels/
 
 # custom
 *.weights
+*.dat
