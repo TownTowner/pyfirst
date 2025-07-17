@@ -3,6 +3,7 @@ import numpy as np
 import mediapipe as mp
 import mediapipe.python.solutions.hands as mpHands
 import mediapipe.python.solutions.face_detection as mpFace
+import mediapipe.python.solutions.face_mesh as mpFaceMsh
 import mediapipe.python.solutions.drawing_utils as mpDraw
 
 
@@ -123,3 +124,47 @@ class FaceDetector:
             cv2.rectangle(frame, (xmin, ymin), (xmin + w, ymin + h), (0, 255, 0), 3)
             txt = f"{int(detection.score[0] * 100)}%"
             cv2.putText(frame, txt, (xmin, ymin - 10), self.font, 3, (255, 0, 255), 3)
+
+
+class FaceMeshDetector:
+
+    def __init__(
+        self,
+        static_image_mode=False,
+        max_num_faces=1,
+        min_detection_confidence=0.5,
+        min_tracking_confidence=0.5,
+        connections=None,
+        lmDrawSpec=None,
+        connDrawSpec=None,
+        fnt=None,
+    ):
+        self.faceMesh = mpFaceMsh.FaceMesh(
+            static_image_mode=static_image_mode,
+            max_num_faces=max_num_faces,
+            min_detection_confidence=min_detection_confidence,
+            min_tracking_confidence=min_tracking_confidence,
+        )
+        self.connections = connections
+        self.lmDrawSpec = lmDrawSpec
+        self.connDrawSpec = connDrawSpec
+
+        self.font = fnt or cv2.FONT_HERSHEY_PLAIN
+
+    def detectAndDraw(self, frame):
+        results = self.detect(frame)
+        return self.draw(frame, results)
+
+    def detect(self, frame):
+        imgRGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.faceMesh.process(imgRGB)
+        return results
+
+    def draw(self, frame, results):
+        lms = results.multi_face_landmarks or []
+        # print(f"{len(results.multi_face_landmarks)= }")
+        for lm in lms:
+            # print(f"{len(faceLms.landmark)= }")
+            mpDraw.draw_landmarks(
+                frame, lm, self.connections, self.lmDrawSpec, self.connDrawSpec
+            )
