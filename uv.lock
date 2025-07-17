@@ -165,6 +165,15 @@ wheels = [
 ]
 
 [[package]]
+name = "comtypes"
+version = "1.4.11"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+sdist = { url = "https://mirrors.aliyun.com/pypi/packages/3c/b9/4431119a640f568190499fd76fac4b4ccb5695659c4b3aac570329c150ea/comtypes-1.4.11.zip", hash = "sha256:0a4259370ec48b685fe4483b0944ba1df0aa45163922073fe9b7df1d187db09e" }
+wheels = [
+    { url = "https://mirrors.aliyun.com/pypi/packages/f1/f4/7b7fdbb613992013c4518a0bf8fee2915f79ec07bcfa6180569bca7fa8ef/comtypes-1.4.11-py3-none-any.whl", hash = "sha256:1760d5059ca7ca1d61b574c998378d879c271a86c41f88926619ea97497592bb" },
+]
+
+[[package]]
 name = "contourpy"
 version = "1.3.2"
 source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
@@ -913,6 +922,21 @@ wheels = [
 ]
 
 [[package]]
+name = "psutil"
+version = "7.0.0"
+source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
+sdist = { url = "https://mirrors.aliyun.com/pypi/packages/2a/80/336820c1ad9286a4ded7e845b2eccfcb27851ab8ac6abece774a6ff4d3de/psutil-7.0.0.tar.gz", hash = "sha256:7be9c3eba38beccb6495ea33afd982a44074b78f28c434a1f51cc07fd315c456" }
+wheels = [
+    { url = "https://mirrors.aliyun.com/pypi/packages/ed/e6/2d26234410f8b8abdbf891c9da62bee396583f713fb9f3325a4760875d22/psutil-7.0.0-cp36-abi3-macosx_10_9_x86_64.whl", hash = "sha256:101d71dc322e3cffd7cea0650b09b3d08b8e7c4109dd6809fe452dfd00e58b25" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/04/8b/30f930733afe425e3cbfc0e1468a30a18942350c1a8816acfade80c005c4/psutil-7.0.0-cp36-abi3-macosx_11_0_arm64.whl", hash = "sha256:39db632f6bb862eeccf56660871433e111b6ea58f2caea825571951d4b6aa3da" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/2a/ed/d362e84620dd22876b55389248e522338ed1bf134a5edd3b8231d7207f6d/psutil-7.0.0-cp36-abi3-manylinux_2_12_i686.manylinux2010_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:1fcee592b4c6f146991ca55919ea3d1f8926497a713ed7faaf8225e174581e91" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/bf/b9/b0eb3f3cbcb734d930fdf839431606844a825b23eaf9a6ab371edac8162c/psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4b1388a4f6875d7e2aff5c4ca1cc16c545ed41dd8bb596cefea80111db353a34" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/eb/a2/709e0fe2f093556c17fbafda93ac032257242cabcc7ff3369e2cb76a97aa/psutil-7.0.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a5f098451abc2828f7dc6b58d44b532b22f2088f4999a937557b603ce72b1993" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/50/e6/eecf58810b9d12e6427369784efe814a1eec0f492084ce8eb8f4d89d6d61/psutil-7.0.0-cp37-abi3-win32.whl", hash = "sha256:ba3fcef7523064a6c9da440fc4d6bd07da93ac726b5733c29027d7dc95b39d99" },
+    { url = "https://mirrors.aliyun.com/pypi/packages/50/1b/6921afe68c74868b4c9fa424dad3be35b095e16687989ebbb50ce4fceb7c/psutil-7.0.0-cp37-abi3-win_amd64.whl", hash = "sha256:4cf3d4eb1aa9b348dec30105c55cd9b7d4629285735a102beb4441e38db90553" },
+]
+
+[[package]]
 name = "pycairo"
 version = "1.28.0"
 source = { registry = "https://mirrors.aliyun.com/pypi/simple" }
@@ -924,6 +948,15 @@ wheels = [
     { url = "https://mirrors.aliyun.com/pypi/packages/59/a7/c3e5ed55781dfe1b31eb4a2482aeae707671f3d36b0ea53a1722f4a3dfe9/pycairo-1.28.0-cp313-cp313-win32.whl", hash = "sha256:d13352429d8a08a1cb3607767d23d2fb32e4c4f9faa642155383980ec1478c24" },
     { url = "https://mirrors.aliyun.com/pypi/packages/8b/1c/ebadd290748aff3b6bc35431114d41e7a42f40a4b988c2aaf2dfed5d8156/pycairo-1.28.0-cp313-cp313-win_amd64.whl", hash = "sha256:082aef6b3a9dcc328fa648d38ed6b0a31c863e903ead57dd184b2e5f86790140" },
     { url = "https://mirrors.aliyun.com/pypi/packages/3e/ce/a3f5f1946613cd8a4654322b878c59f273c6e9b01dfadadd3f609070e0b9/pycairo-1.28.0-cp313-cp313-win_arm64.whl", hash = "sha256:026afd53b75291917a7412d9fe46dcfbaa0c028febd46ff1132d44a53ac2c8b6" },
+]
+
+[[package]]
+name = "pycaw"
+version = "20240210"
+source = { git = "https://github.com/AndreMiras/pycaw#14e2020d042a2f5a30cffc5105cc6f9676437f63" }
+dependencies = [
+    { name = "comtypes" },
+    { name = "psutil" },
 ]
 
 [[package]]
@@ -974,6 +1007,7 @@ dependencies = [
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "playwright" },
+    { name = "pycaw" },
     { name = "pytesseract" },
     { name = "python-barcode" },
     { name = "pyzbar" },
@@ -997,6 +1031,7 @@ requires-dist = [
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "playwright", specifier = ">=1.52.0" },
+    { name = "pycaw", git = "https://github.com/AndreMiras/pycaw" },
     { name = "pytesseract", specifier = ">=0.3.13" },
     { name = "python-barcode", specifier = ">=0.15.1" },
     { name = "pyzbar", specifier = ">=0.1.9" },

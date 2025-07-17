@@ -12,16 +12,17 @@ class HandDetector:
         self.hands = mpHands.Hands()
 
     def detectAndDraw(self, frame):
-        results = self.detect(frame)
-        return self.draw(frame, results)
+        self.results = self.detect(frame)
+        return self.draw(frame, self.results)
 
     def detect(self, frame):
         imgRGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        results = self.hands.process(imgRGB)
-        return results
+        self.results = self.hands.process(imgRGB)
+        return self.results
 
-    def draw(self, frame, results):
+    def draw(self, frame, results=None):
         h, w, c = frame.shape
+        results = results or self.results
         lms = results.multi_hand_landmarks or []
         # print(f"{type(results.multi_hand_landmarks)= }") # list
         # print(f"{results.multi_hand_landmarks= }")
@@ -56,6 +57,50 @@ class HandDetector:
                 cv2.circle(frame, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
             mpDraw.draw_landmarks(frame, handLms, mpHands.HAND_CONNECTIONS)
         return frame
+
+    def drawAndFindPosition(self, frame, results=None, handNo=None, draw=True):
+        self.handLmDict = {}
+
+        results = results or self.results
+        h, w, c = frame.shape
+        myHands = []
+        if handNo is not None and results.multi_hand_landmarks:
+            myHands = [results.multi_hand_landmarks[handNo]]
+
+        if len(myHands) == 0:
+            return self.handLmDict
+
+        for hIdx, hand in enumerate(myHands):
+            xList = []
+            yList = []
+            for idx, lm in enumerate(hand.landmark):
+                # print(id, lm)
+                cx, cy = int(lm.x * w), int(lm.y * h)
+                xList.append(cx)
+                yList.append(cy)
+                # print(id, cx, cy)
+                self.handLmDict[hIdx] = self.handLmDict.get(hIdx, {})
+                self.handLmDict[hIdx]["lms"] = self.handLmDict[hIdx].get("lms", {})
+                self.handLmDict[hIdx]["lms"][idx] = (cx, cy)
+                if draw:
+                    cv2.circle(frame, (cx, cy), 5, (255, 0, 255), cv2.FILLED)
+            mpDraw.draw_landmarks(frame, hand, mpHands.HAND_CONNECTIONS)
+
+            xmin, xmax = min(xList), max(xList)
+            ymin, ymax = min(yList), max(yList)
+            self.handLmDict[hIdx] = self.handLmDict.get(hIdx, {})
+            self.handLmDict[hIdx]["bbox"] = xmin, ymin, xmax, ymax
+
+            if draw:
+                cv2.rectangle(
+                    frame,
+                    (xmin - 20, ymin - 20),
+                    (xmax + 20, ymax + 20),
+                    (0, 255, 0),
+                    2,
+                )
+
+        return self.handLmDict
 
 
 class FaceDetector:
@@ -127,7 +172,6 @@ class FaceDetector:
 
 
 class FaceMeshDetector:
-
     def __init__(
         self,
         static_image_mode=False,
