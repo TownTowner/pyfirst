@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import mediapipe.python.solutions.hands as mpHands
+import mediapipe.python.solutions.face_detection as mpFace
 import mediapipe.python.solutions.drawing_utils as mpDraw
-import time
 
 
 class HandDetector:
@@ -55,3 +55,71 @@ class HandDetector:
                 cv2.circle(frame, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
             mpDraw.draw_landmarks(frame, handLms, mpHands.HAND_CONNECTIONS)
         return frame
+
+
+class FaceDetector:
+    def __init__(self, fnt=None):
+        self.face = mpFace.FaceDetection()
+        self.font = fnt or cv2.FONT_HERSHEY_PLAIN
+
+    def detectAndDraw(self, frame):
+        results = self.detect(frame)
+        return self.draw(frame, results)
+
+    def detect(self, frame):
+        imgRGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.face.process(imgRGB)
+        return results
+
+    def draw(self, frame, results):
+        ih, iw, ic = frame.shape
+        detections = results.detections or []
+        for detection in detections:
+            # print(f"{detection= }")
+            #  detection= label_id: 0
+            # score: 0.922280312
+            # location_data {
+            #   format: RELATIVE_BOUNDING_BOX
+            #   relative_bounding_box {
+            #     xmin: 0.554067671
+            #     ymin: 0.521598577
+            #     width: 0.127527
+            #     height: 0.226714432
+            #   }
+            #   relative_keypoints {
+            #     x: 0.595507801
+            #     y: 0.570104301
+            #   }
+            #   relative_keypoints {
+            #     x: 0.648964167
+            #     y: 0.595219374
+            #   }
+            #   relative_keypoints {
+            #     x: 0.617281318
+            #     y: 0.634479344
+            #   }
+            #   relative_keypoints {
+            #     x: 0.611289084
+            #     y: 0.682459056
+            #   }
+            #   relative_keypoints {
+            #     x: 0.559694707
+            #     y: 0.585343063
+            #   }
+            #   relative_keypoints {
+            #     x: 0.676331162
+            #     y: 0.634479463
+            #   }
+            # }
+            bbox = detection.location_data.relative_bounding_box
+            xmin, ymin, w, h = bbox.xmin, bbox.ymin, bbox.width, bbox.height
+            xmin, ymin, w, h = (
+                int(xmin * iw),
+                int(ymin * ih),
+                int(w * iw),
+                int(h * ih),
+            )
+            # mpDraw.draw_detection(frame, detection)
+            cv2.rectangle(frame, (xmin, ymin), (xmin + w, ymin + h), (0, 255, 0), 3)
+            txt = f"{int(detection.score[0] * 100)}%"
+            cv2.putText(frame, txt, (xmin, ymin - 10), self.font, 3, (255, 0, 255), 3)
