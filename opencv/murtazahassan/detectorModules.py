@@ -20,7 +20,7 @@ class HandDetector:
         self.results = self.hands.process(imgRGB)
         return self.results
 
-    def draw(self, frame, results=None):
+    def draw(self, frame, results=None, draw=True):
         h, w, c = frame.shape
         results = results or self.results
         lms = results.multi_hand_landmarks or []
@@ -54,8 +54,10 @@ class HandDetector:
             # }
             for idx, lm in enumerate(handLms.landmark):
                 cx, cy = int(lm.x * w), int(lm.y * h)
-                cv2.circle(frame, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
-            mpDraw.draw_landmarks(frame, handLms, mpHands.HAND_CONNECTIONS)
+                if draw:
+                    cv2.circle(frame, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
+            if draw:
+                mpDraw.draw_landmarks(frame, handLms, mpHands.HAND_CONNECTIONS)
         return frame
 
     def drawAndFindPosition(self, frame, results=None, handNo=None, draw=True):
@@ -92,13 +94,8 @@ class HandDetector:
             self.handLmDict[hIdx]["bbox"] = xmin, ymin, xmax, ymax
 
             if draw:
-                cv2.rectangle(
-                    frame,
-                    (xmin - 20, ymin - 20),
-                    (xmax + 20, ymax + 20),
-                    (0, 255, 0),
-                    2,
-                )
+                pt1, pt2 = (xmin - 20, ymin - 20), (xmax + 20, ymax + 20)
+                cv2.rectangle(frame, pt1, pt2, (0, 255, 0), 2)
 
         return self.handLmDict
 
