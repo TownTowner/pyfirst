@@ -66,8 +66,9 @@ class HandDetector:
         results = results or self.results
         h, w, c = frame.shape
         myHands = []
-        if handNo is not None and results.multi_hand_landmarks:
-            myHands = [results.multi_hand_landmarks[handNo]]
+        rlms = results.multi_hand_landmarks
+        if handNo is not None and rlms and 0 <= handNo < len(rlms):
+            myHands = [rlms[handNo]]
 
         if len(myHands) == 0:
             return self.handLmDict
