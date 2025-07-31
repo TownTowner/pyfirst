@@ -39,7 +39,7 @@ def main():
             cv2.circle(img, leftEye, 5, (0, 0, 255), cv2.FILLED)
             cv2.circle(img, rightEye, 5, (255, 0, 0), cv2.FILLED)
 
-            pixWidth, *_ = detector.findDistance(leftEye, rightEye, img.copy())
+            pixWidth, *_ = detector.findDistance(leftEye, rightEye)
 
             # calc focalLength (temporary):
             # focalLength = (pixWidth * realDistance) / realW
