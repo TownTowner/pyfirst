@@ -1,3 +1,8 @@
+import this
+
+# will print the Zen of Python
+
+
 def main():
     print("Hello from pyfirst!")
 
