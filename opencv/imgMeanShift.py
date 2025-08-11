@@ -26,11 +26,18 @@ def mog2():
     # cap = cv2.VideoCapture("data/videos/people.mp4")
     cap = cv2.VideoCapture("data/videos/walking.mp4")
     mog = cv2.createBackgroundSubtractorMOG2()
+    kernel = np.ones((3, 3), np.uint8)
+    # kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     while True:
         ret, frame = cap.read()
         if not ret:
             break
         fgmask = mog.apply(frame)
+        # 形态学开运算去噪点
+        cv2.imshow("mogWithoutMorph", fgmask)
+
+        fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, kernel)
+
         cv2.imshow("mog", fgmask)
         if cv2.waitKey(100) & 0xFF == ord("q"):
             break
@@ -89,9 +96,9 @@ def imgFix():
 
 def main():
     # meanShift()
-    # mog2()
+    mog2()
     # cascadeDetection()
-    imgFix()
+    # imgFix()
 
 
 if __name__ == "__main__":
