@@ -23,7 +23,7 @@ dependencies = [
     "python-barcode>=0.15.1",
     "pyzbar>=0.1.9",
     "requests>=2.32.3",
-    "setuptools>=80.9.0,<81",
+    "setuptools>=83.0.0,<84",
     "sqlalchemy>=2.0.41",
 ]
 
